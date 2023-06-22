@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
+using static UnityEditor.CameraEditor;
 using Object = UnityEngine.Object;
 
 internal abstract class BaseController : IDisposable
 {
     private List<BaseController> _baseControllers;
     private List<GameObject> _gameObjects;
+    private List<Settings> _settings;
     private bool _isDisposed;
 
 
@@ -59,5 +60,11 @@ internal abstract class BaseController : IDisposable
     {
         _gameObjects ??= new List<GameObject>();
         _gameObjects.Add(gameObject);
+    }
+
+    protected void AddSettings(Settings settings)
+    {
+        _settings ??= new List<Settings>();
+        _settings.Add(settings);
     }
 }
